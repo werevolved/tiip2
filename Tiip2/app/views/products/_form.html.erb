@@ -1,3 +1,4 @@
+<% if current_user.adminLevel > 0 %>
 <%= form_for(@product) do |f| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
@@ -20,6 +21,10 @@
         <%= f.text_field :number %>
       </div>
       <div class="field">
+        <%= f.label :category %><br>
+        <%= f.text_field :category %>
+      </div>
+      <div class="field">
         <%= f.label :price %><br>
         <%= f.text_field :price %>
       </div>
@@ -36,3 +41,7 @@
       </div>
     </div>
     <% end %>
+   <% else %>
+   <p>
+   Sorry, you're not an authorized administrator.</p>
+   <% end %> 
